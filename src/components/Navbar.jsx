@@ -1,0 +1,164 @@
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Search, Home } from "lucide-react";
+import { playlists } from "../data";
+import { Link } from "react-router-dom";
+import { useLanguage } from "../context/LanguageContext";
+import { texts } from "../constants/texts";
+import { trendingSongs } from "../components/homeData"; 
+
+
+const Navbar = ({ toggleSidebar }) => {
+
+  const [query, setQuery] = useState("");
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
+  const { language } = useLanguage();
+  const t = texts[language] || texts.vi;
+
+  useEffect(() => {
+    const checkUser = () => {
+      const savedUser = localStorage.getItem("user");
+      setUser(savedUser ? JSON.parse(savedUser) : null);
+    };
+
+    checkUser(); 
+
+    window.addEventListener("storage", checkUser);
+
+    return () => window.removeEventListener("storage", checkUser);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setUser(null);
+    navigate("/");
+  };
+
+const allSongs = [...playlists, ...trendingSongs];
+
+const results = allSongs.filter((p) =>
+  p.title.toLowerCase().includes(query.toLowerCase())
+);
+
+  const handleSearchClick = (title) => {
+    navigate(`/playlist/${title}`);
+    setQuery("");
+  };
+
+  return (
+    <header className="bg-gradient-to-b from-gray-800 to-black text-white fixed top-0 w-full z-50 flex items-center justify-between px-4 py-3 shadow-md">
+      <div className="flex items-center gap-3">
+  <button
+  onClick={toggleSidebar}
+    className="md:hidden text-white text-2xl absolute left-0 top-1 z-50"
+>
+  ☰
+</button>
+        <img
+          src="/logo.png"
+          alt="Logo"
+          className="h-8 w-8 object-contain cursor-pointer"
+          onClick={() => navigate("/")}
+        />
+        <Home
+          size={26}
+          className="cursor-pointer hover:text-green-400"
+          onClick={() => navigate("/")}
+        />
+      </div>
+
+      <div className="relative w-full max-w-md">
+        <input
+          type="text"
+          placeholder={t.searchPlaceholder}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          className="w-full bg-[#121212] text-white pl-10 pr-4 py-2 rounded-full border border-gray-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500"
+        />
+        <Search className="absolute top-2 left-3 text-gray-400" size={18} />
+
+        {query && (
+          <div className="absolute top-full mt-2 bg-black border border-gray-700 rounded-lg w-full z-50 max-h-64 overflow-y-auto shadow-lg">
+            {results.length === 0 ? (
+              <p className="text-sm text-gray-400 p-3">{t.noSearchResult}</p>
+            ) : (
+              results.map((item, index) => (
+  <div
+    key={index}
+    className="p-3 hover:bg-gray-800 cursor-pointer text-sm border-b border-gray-700"
+    onClick={() => {
+      const savedUser = localStorage.getItem("user");
+      if (!savedUser) {
+        window.dispatchEvent(new CustomEvent("show-login-popup"));
+      } else {
+        const audio = new Audio(item.audio);
+        audio.play();
+     
+      }
+      setQuery("");
+    }}
+  >
+    🎵 {item.title} – {item.artist}
+  </div>
+))
+            )}
+          </div>
+        )}
+      </div>
+
+      {/* Right: Menu */}
+      <div className="flex gap-4 items-center text-sm">
+        <Link to="/premium" className="hover:underline cursor-pointer">
+          {t.premium}
+        </Link>
+        <span
+          onClick={() => navigate("/support")}
+          className="hover:underline cursor-pointer"
+        >
+          {t.support}
+        </span>
+        <span
+          onClick={() => navigate("/download")}
+          className="hover:underline cursor-pointer"
+        >
+          {t.download}
+        </span>
+        <span className="hidden lg:inline">|</span>
+        <span className="hover:underline cursor-pointer hidden lg:inline">
+          {t.installApp}
+        </span>
+
+        {user ? (
+          <div className="flex items-center gap-2">
+            <span className="font-semibold text-green-400">👤 {user.name}</span>
+            <button
+              onClick={handleLogout}
+              className="text-xs underline hover:text-red-400"
+            >
+              Đăng xuất
+            </button>
+          </div>
+        ) : (
+          <>
+            <span
+              className="hover:underline cursor-pointer"
+              onClick={() => navigate("/signup")}
+            >
+              {t.signup}
+            </span>
+            <button
+              onClick={() => navigate("/login")}
+              className="bg-white text-black px-4 py-1 rounded-full hover:opacity-90"
+            >
+              {t.login}
+            </button>
+          </>
+        )}
+      </div>
+    </header>
+  );
+};
+
+export default Navbar;
