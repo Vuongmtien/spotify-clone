@@ -11,7 +11,8 @@ const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const API_URL = import.meta.env.VITE_API_URL;
+  console.log("API đang gọi:", API_URL);
   const handleLogin = async () => {
     if (!email || !password) {
       alert("Vui lòng điền email và mật khẩu!");
@@ -19,8 +20,9 @@ const Login = () => {
     }
 
     try {
-      const res = await axios.get(
-  `http://localhost:3001/users?email=${email.trim().toLowerCase()}&password=${password.trim()}`
+      
+const res = await axios.get(
+  `${API_URL}/users?email=${email.trim().toLowerCase()}&password=${password.trim()}`
 );
       if (res.data.length > 0) {
         const user = res.data[0];
