@@ -88,16 +88,20 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden bg-black text-white relative fade-in">
-      <Navbar toggleSidebar={() => setShowSidebar(!showSidebar)} />
+    <div className="flex h-screen bg-black text-white">
 
+    
+    {/* Navbar full width */}
+    <Navbar toggleSidebar={() => setShowSidebar(!showSidebar)} />
 
-     <div className="flex flex-1 overflow-hidden">
+    {/* Main content */}
+    <div className="flex flex-1 overflow-hidden">
+      {!hideSidebarRoutes.includes(location.pathname) && (
+        <Sidebar showSidebar={showSidebar} />
+      )}
 
-        {!hideSidebarRoutes.includes(location.pathname) && (
-  <Sidebar showSidebar={showSidebar} />
-)}
-
+      <div className="flex-1 flex flex-col overflow-y-auto">
+    
         <Routes>
           <Route path="/" element={
             <div className="flex-1 p-8 pt-24 bg-gradient-to-b from-gray-800 to-black overflow-y-auto min-h-screen pb-28">
@@ -346,6 +350,7 @@ function App() {
           </div>
         </div>
       )}
+    </div>
     </div>
   );
 }

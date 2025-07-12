@@ -45,6 +45,7 @@ function Sidebar({ showSidebar }) {
         <div>
           <h1 className="text-2xl font-bold mb-6 text-white">TieM</h1>
           <ul className="space-y-4 text-lg text-white">
+            
             <li
               className="cursor-pointer hover:underline"
               onClick={() => {

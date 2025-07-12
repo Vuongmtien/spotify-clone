@@ -48,11 +48,11 @@ const results = allSongs.filter((p) =>
   };
 
   return (
-    <header className="bg-gradient-to-b from-gray-800 to-black text-white fixed top-0 w-full z-50 flex items-center justify-between px-4 py-3 shadow-md">
+<header className="bg-gradient-to-b from-gray-800 to-black text-white fixed top-0 left-0 right-0 z-[999] flex items-center justify-between px-4 py-3 shadow-md h-16">
       <div className="flex items-center gap-3">
   <button
   onClick={toggleSidebar}
-    className="md:hidden text-white text-2xl absolute left-0 top-1 z-50"
+    className="md:hidden text-white text-2xl"
 >
   ☰
 </button>
