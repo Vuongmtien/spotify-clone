@@ -13,6 +13,8 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const handleSignup = async () => {
     if (!name || !email || !password) {
       alert("Vui lòng điền đầy đủ thông tin!");
@@ -20,14 +22,14 @@ const Signup = () => {
     }
 
     try {
-      const res = await axios.get(`http://localhost:3001/users?email=${email}`);
+      const res = await axios.get(`${API_URL}/users?email=${email.trim().toLowerCase()}`);
       if (res.data.length > 0) {
         alert("Email đã được sử dụng!");
         return;
       }
 
       await axios.post(
-        "http://localhost:3001/users",
+        `${API_URL}/users`,
         {
           name: name.trim(),
           email: email.trim().toLowerCase(),
