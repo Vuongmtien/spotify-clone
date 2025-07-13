@@ -15,10 +15,18 @@ import Login from "./components/Login";
 import { trendingSongs, popularArtists } from "./components/homeData";
 import { useLanguage } from "./context/LanguageContext";
 import { texts } from "./constants/texts";
+import Profile from "./components/Profile"; 
+import PlanManagement from "./components/PlanManagement"; 
+import EditProfile from "./components/EditProfile";
+import RecoverPlaylist from "./components/RecoverPlaylist";
+
+
+
+
 
 function App() {
   const location = useLocation();
-  const hideSidebarRoutes = ["/premium", "/download", "/signup", "/support", "/login"];
+  const hideSidebarRoutes = ["/premium", "/download", "/signup", "/support", "/login","/profile","/account/plan","/profile/edit","/playlist/recover"];
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const { language } = useLanguage();
   const t = texts[language] || texts.vi;
@@ -91,10 +99,10 @@ function App() {
     <div className="flex h-screen bg-black text-white">
 
     
-    {/* Navbar full width */}
+   
     <Navbar toggleSidebar={() => setShowSidebar(!showSidebar)} />
 
-    {/* Main content */}
+    
     <div className="flex flex-1 overflow-hidden">
       {!hideSidebarRoutes.includes(location.pathname) && (
         <Sidebar showSidebar={showSidebar} />
@@ -199,7 +207,9 @@ function App() {
 )}
             </div>
           } />
+          <Route path="/playlist/recover" element={<RecoverPlaylist />} />
 
+          <Route path="/account/plan" element={<PlanManagement />} />
           <Route path="/library" element={
             <div className="flex-1 p-8 pt-24 text-white">
               <h2 className="text-2xl font-semibold mb-4">{t.yourLibrary}</h2>
@@ -222,7 +232,10 @@ function App() {
               </div>
             </div>
           } />
-          
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/edit" element={<EditProfile />} />
+
+
   <Route
     path="/login"
     element={

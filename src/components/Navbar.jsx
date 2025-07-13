@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Search, Home } from "lucide-react";
 import { playlists } from "../data";
@@ -11,30 +11,18 @@ import { trendingSongs } from "../components/homeData";
 const Navbar = ({ toggleSidebar }) => {
 
   const [query, setQuery] = useState("");
-  const [user, setUser] = useState(null);
+
   const navigate = useNavigate();
 
   const { language } = useLanguage();
   const t = texts[language] || texts.vi;
+  const user = JSON.parse(localStorage.getItem("user"));
 
-  useEffect(() => {
-    const checkUser = () => {
-      const savedUser = localStorage.getItem("user");
-      setUser(savedUser ? JSON.parse(savedUser) : null);
-    };
 
-    checkUser(); 
-
-    window.addEventListener("storage", checkUser);
-
-    return () => window.removeEventListener("storage", checkUser);
-  }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-    setUser(null);
-    navigate("/");
-  };
+ const handleLogout = () => {
+  localStorage.removeItem("user");
+  navigate("/");
+};
 
 const allSongs = [...playlists, ...trendingSongs];
 
@@ -131,16 +119,21 @@ const results = allSongs.filter((p) =>
         </span>
 
         {user ? (
-          <div className="flex items-center gap-2">
-            <span className="font-semibold text-green-400">👤 {user.name}</span>
-            <button
-              onClick={handleLogout}
-              className="text-xs underline hover:text-red-400"
-            >
-              Đăng xuất
-            </button>
-          </div>
-        ) : (
+  <div className="flex items-center gap-2">
+    <span
+  className="font-semibold text-green-400 cursor-pointer hover:underline"
+  onClick={() => navigate("/profile")}
+>
+  👤 {user?.username || "User"}
+</span>
+    <button
+      onClick={handleLogout}
+      className="text-xs underline hover:text-red-400"
+    >
+      Đăng xuất
+    </button>
+  </div>
+) : (
           <>
             <span
               className="hover:underline cursor-pointer"
