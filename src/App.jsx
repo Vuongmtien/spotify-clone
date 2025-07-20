@@ -19,6 +19,7 @@ import Profile from "./components/Profile";
 import PlanManagement from "./components/PlanManagement"; 
 import EditProfile from "./components/EditProfile";
 import RecoverPlaylist from "./components/RecoverPlaylist";
+import PodcastRankings from "./components/PodcastRanking";
 
 
 
@@ -208,6 +209,8 @@ function App() {
             </div>
           } />
           <Route path="/playlist/recover" element={<RecoverPlaylist />} />
+          <Route path="/podcasts/rankings" element={<PodcastRankings />} />
+
 
           <Route path="/account/plan" element={<PlanManagement />} />
           <Route path="/library" element={

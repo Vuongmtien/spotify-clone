@@ -39,7 +39,13 @@ const Signup = () => {
           headers: { "Content-Type": "application/json" },
         }
       );
-
+      localStorage.setItem(
+  "user",
+  JSON.stringify({
+    username: name.trim(), 
+    email: email.trim().toLowerCase(),
+  })
+);
       alert("Đăng ký thành công!");
       navigate("/login");
     } catch (err) {

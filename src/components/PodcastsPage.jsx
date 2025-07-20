@@ -2,9 +2,11 @@ import React from "react";
 import Footer from "./Footer";
 import { useLanguage } from "../context/LanguageContext";
 import { texts } from "../constants/texts";
+import { useNavigate } from "react-router-dom";
+
 
 const categories = [
-  "Bảng xếp hạng Podcast", "Sư phạm", "Tài liệu", "Hài kịch", "Văn hoá Pop",
+  "Bảng xếp hạng ", "Sư phạm", "Tài liệu", "Hài kịch", "Văn hoá Pop",
   "Thể dục và dinh dưỡng", "Người nổi tiếng", "Podcast về truyền hình",
   "Sắc đẹp", "Trò chơi điện tử", "Phim ảnh", "Sách"
 ];
@@ -12,6 +14,10 @@ const categories = [
 const PodcastsPage = () => {
   const { language } = useLanguage();
   const t = texts[language] || texts.vi;
+  const navigate = useNavigate();
+  const categoryRoutes = {
+    "Bảng xếp hạng ": "/podcasts/rankings",
+  };
 
   return (
     <div className="flex-1 p-8 pt-24 text-white">
@@ -21,7 +27,12 @@ const PodcastsPage = () => {
         {categories.map((title, index) => (
           <div
             key={index}
-            className="relative rounded-lg p-4 overflow-hidden hover:scale-105 transition-transform duration-300"
+            onClick={() => {
+              const route = categoryRoutes[title];
+              if (route) navigate(route);
+              else alert(`Chức năng "${title}" đang phát triển`);
+            }}
+            className="cursor-pointer relative rounded-lg p-4 overflow-hidden hover:scale-105 transition-transform duration-300"
             style={{ backgroundColor: "#1f2937" }}
           >
             <div className="relative z-10 text-white text-lg font-semibold">{title}</div>

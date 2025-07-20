@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { trendingSongs } from "../components/homeData";
+import { useLanguage } from "../context/LanguageContext";
+import { texts } from "../constants/texts";
 
 const RecoverPlaylist = () => {
   const navigate = useNavigate();
-
   const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
-  // Lọc ra những bài chưa nằm trong favorites
+  const { language } = useLanguage();
+  const t = texts[language] || texts.vi;
+
   const [deleted, setDeleted] = useState(
     trendingSongs.filter(
       (song) => !favorites.some((f) => f.title === song.title)
@@ -26,13 +29,13 @@ const RecoverPlaylist = () => {
         onClick={() => navigate("/profile")}
         className="text-sm text-green-400 hover:underline"
       >
-        ← Quay lại trang hồ sơ
+        ← {t.backToProfile}
       </button>
 
-      <h1 className="text-2xl font-bold mb-4">Khôi phục danh sách phát đã xoá</h1>
+      <h1 className="text-2xl font-bold mb-4">{t.recoverPlaylist}</h1>
 
       {deleted.length === 0 ? (
-        <p className="text-gray-400">Không còn bài hát nào cần khôi phục.</p>
+        <p className="text-gray-400">{t.noDeleted}</p>
       ) : (
         <div className="space-y-4">
           {deleted.map((song, index) => (
@@ -55,7 +58,7 @@ const RecoverPlaylist = () => {
                 onClick={() => handleRestore(song)}
                 className="bg-green-500 hover:bg-green-400 text-black px-4 py-1 rounded-full"
               >
-                Khôi phục
+                {t.restore}
               </button>
             </div>
           ))}

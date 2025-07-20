@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useLanguage } from "../context/LanguageContext";
+import { texts } from "../constants/texts";
 
 const EditProfile = () => {
   const navigate = useNavigate();
   const savedUser = JSON.parse(localStorage.getItem("user")) || {};
+  const { language } = useLanguage();
+  const t = texts[language] || texts.vi;
 
   const [username, setUsername] = useState(savedUser.username || "");
   const [email, setEmail] = useState(savedUser.email || "");
@@ -22,25 +26,24 @@ const EditProfile = () => {
       country,
       agreed,
     };
-
     localStorage.setItem("user", JSON.stringify(updatedUser));
     navigate("/profile");
   };
 
   return (
-    
     <div className="min-h-screen bg-black text-white pt-24 px-4 max-w-2xl mx-auto space-y-6">
-        <button
-    onClick={() => navigate("/profile")}
-    className="text-sm text-green-400 hover:underline"
-  >
-    ← Quay lại trang hồ sơ
-  </button>
-      <h1 className="text-3xl font-bold">Chỉnh sửa thông tin cá nhân</h1>
+      <button
+        onClick={() => navigate("/profile")}
+        className="text-sm text-green-400 hover:underline"
+      >
+        ← {t.backToProfile}
+      </button>
+
+      <h1 className="text-3xl font-bold">{t.editProfile}</h1>
 
       <div className="space-y-4">
         <div>
-          <label className="block mb-1">Tên người dùng</label>
+          <label className="block mb-1">{t.usernameLabel}</label>
           <input
             type="text"
             value={username}
@@ -50,7 +53,7 @@ const EditProfile = () => {
         </div>
 
         <div>
-          <label className="block mb-1">Email</label>
+          <label className="block mb-1">{t.email}</label>
           <input
             type="email"
             value={email}
@@ -60,7 +63,7 @@ const EditProfile = () => {
         </div>
 
         <div>
-          <label className="block mb-1">Giới tính</label>
+          <label className="block mb-1">{t.gender}</label>
           <select
             value={gender}
             onChange={(e) => setGender(e.target.value)}
@@ -73,25 +76,25 @@ const EditProfile = () => {
         </div>
 
         <div>
-          <label className="block mb-1">Ngày sinh</label>
+          <label className="block mb-1">{t.birthdate}</label>
           <div className="flex gap-2">
             <input
               type="number"
-              placeholder="Ngày"
+              placeholder={t.day || "Ngày"}
               value={dob.day}
               onChange={(e) => setDob({ ...dob, day: e.target.value })}
               className="w-1/3 bg-[#121212] text-white px-3 py-2 rounded border border-gray-700"
             />
             <input
               type="text"
-              placeholder="Tháng"
+              placeholder={t.month || "Tháng"}
               value={dob.month}
               onChange={(e) => setDob({ ...dob, month: e.target.value })}
               className="w-1/3 bg-[#121212] text-white px-3 py-2 rounded border border-gray-700"
             />
             <input
               type="number"
-              placeholder="Năm"
+              placeholder={t.year || "Năm"}
               value={dob.year}
               onChange={(e) => setDob({ ...dob, year: e.target.value })}
               className="w-1/3 bg-[#121212] text-white px-3 py-2 rounded border border-gray-700"
@@ -100,7 +103,7 @@ const EditProfile = () => {
         </div>
 
         <div>
-          <label className="block mb-1">Quốc gia hoặc khu vực</label>
+          <label className="block mb-1">{t.country}</label>
           <input
             type="text"
             value={country}
@@ -115,7 +118,7 @@ const EditProfile = () => {
             checked={agreed}
             onChange={(e) => setAgreed(e.target.checked)}
           />
-          <label>Chia sẻ dữ liệu đăng ký với các nhà cung cấp nội dung Spotify cho mục đích tiếp thị.</label>
+          <label>{t.shareData}</label>
         </div>
       </div>
 
@@ -124,13 +127,13 @@ const EditProfile = () => {
           onClick={() => navigate("/profile")}
           className="text-gray-400 hover:underline"
         >
-          Hủy
+          {t.cancel}
         </button>
         <button
           onClick={handleSave}
           className="bg-green-500 hover:bg-green-400 text-black font-semibold px-6 py-2 rounded-full"
         >
-          Lưu hồ sơ
+          {t.saveProfile}
         </button>
       </div>
     </div>

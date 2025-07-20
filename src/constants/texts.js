@@ -89,7 +89,41 @@ export const texts = {
   download: "Tải xuống",
   installApp: "Cài đặt Ứng dụng",
   signup: "Đăng ký",
-  login: "Đăng nhập"
+  login: "Đăng nhập",
+  promoTitle: "Nghe không giới hạn. Dùng thử gói Premium trong 3 tháng với giá 59.000 ₫.",
+    promoDesc: "Chỉ áp dụng cho người dùng mới. Sau đó là 59.000 ₫/tháng. Có áp dụng điều khoản. Ưu đãi kết thúc vào 15 tháng 7, 2025.",
+    promoBtn: "Dùng thử 3 tháng với giá 59.000 ₫",
+    searchPlaceholder: "Tìm kiếm tài khoản hoặc bài viết trợ giúp",
+    yourPlan: "Gói của bạn",
+    account: "Tài khoản",
+    managePlan: "Quản lý gói đăng ký",
+    editProfile: "Chỉnh sửa thông tin cá nhân",
+    recoverPlaylist: "Khôi phục danh sách phát",
+    noResult: "Không tìm thấy kết quả nào.",
+
+    planFeatures: [
+      "1 tài khoản Free",
+      "Nghe nhạc có quảng cáo",
+      "Chỉ nghe trực tuyến",
+      "Phát nhạc ngẫu nhiên",
+      "Chất lượng âm thanh cơ bản",
+    ],
+    free: "Miễn phí",
+    tryPremium: "Dùng Premium",
+    backToProfile: "Quay lại trang hồ sơ",
+
+    noDeleted: "Không còn bài hát nào cần khôi phục.",
+    restore: "Khôi phục",
+
+    usernameLabel: "Tên người dùng",
+    email: "Email",
+    gender: "Giới tính",
+    birthdate: "Ngày sinh",
+    country: "Quốc gia hoặc khu vực",
+    shareData: "Chia sẻ dữ liệu đăng ký với các nhà cung cấp nội dung Spotify cho mục đích tiếp thị.",
+    cancel: "Hủy",
+    saveProfile: "Lưu hồ sơ",
+  
   
 },
     
@@ -185,7 +219,40 @@ export const texts = {
   download: "Download",
   installApp: "Install App",
   signup: "Sign Up",
-  login: "Log In"
+  login: "Log In",
+  promoTitle: "Listen without limits. Try Premium for 3 months at 59,000 ₫.",
+    promoDesc: "Only for new users. Then 59,000 ₫/month. Terms apply. Offer ends July 15, 2025.",
+    promoBtn: "Try 3 months for 59,000 ₫",
+    searchPlaceholder: "Search for account or help articles",
+    yourPlan: "Your Plan",
+    account: "Account",
+    managePlan: "Manage Subscription",
+    editProfile: "Edit Profile",
+    recoverPlaylist: "Recover Playlist",
+    noResult: "No result found.",
+
+    planFeatures: [
+      "1 Free account",
+      "Music with ads",
+      "Online listening only",
+      "Shuffle play",
+      "Basic audio quality",
+    ],
+    free: "Free",
+    tryPremium: "Try Premium",
+    backToProfile: "Back to Profile",
+
+    noDeleted: "No deleted songs to recover.",
+    restore: "Restore",
+
+    usernameLabel: "Username",
+    email: "Email",
+    gender: "Gender",
+    birthdate: "Date of birth",
+    country: "Country or region",
+    shareData: "Share registration data with Spotify's content providers for marketing.",
+    cancel: "Cancel",
+    saveProfile: "Save Profile",
 },
   
 
@@ -280,7 +347,40 @@ export const texts = {
   download: "ダウンロード",
   installApp: "アプリをインストール",
   signup: "登録",
-  login: "ログイン"
+  login: "ログイン",
+  promoTitle: "無制限で聴こう。3か月間プレミアムを59,000 ₫でお試し。",
+    promoDesc: "新規ユーザーのみ対象。その後は月額59,000 ₫。利用規約が適用されます。2025年7月15日まで有効。",
+    promoBtn: "3か月間を59,000 ₫で試す",
+    searchPlaceholder: "アカウントまたはヘルプ記事を検索",
+    yourPlan: "あなたのプラン",
+    account: "アカウント",
+    managePlan: "サブスクリプション管理",
+    editProfile: "プロフィール編集",
+    recoverPlaylist: "プレイリストを復元",
+    noResult: "結果が見つかりません。",
+
+    planFeatures: [
+      "無料アカウント1つ",
+      "広告付き音楽",
+      "オンライン再生のみ",
+      "シャッフル再生",
+      "標準音質",
+    ],
+    free: "無料",
+    tryPremium: "Premiumを試す",
+    backToProfile: "プロフィールに戻る",
+
+    noDeleted: "復元可能な曲がありません。",
+    restore: "復元",
+
+    usernameLabel: "ユーザー名",
+    email: "メールアドレス",
+    gender: "性別",
+    birthdate: "生年月日",
+    country: "国または地域",
+    shareData: "Spotifyのコンテンツプロバイダーと登録データを共有してマーケティング目的に使用する。",
+    cancel: "キャンセル",
+    saveProfile: "プロフィールを保存",
 
   }
 };

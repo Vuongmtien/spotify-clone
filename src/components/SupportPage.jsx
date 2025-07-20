@@ -1,10 +1,27 @@
 import React from "react";
 import { useLanguage } from "../context/LanguageContext";
 import { texts } from "../constants/texts";
+import SupportAccordion from "./SupportAccordion";
+import AccountAccordion from "./AccountAccordion";
+import PremiumAccordion from "./PremiumAccordion"; 
+import FeaturesAccordion from "./FeaturesAccordion";
+import DevicesAccordion from "./DevicesAccordion"; 
+import PrivacyAccordion from "./PrivacyAccordion"; 
+
 
 const SupportPage = () => {
   const { language } = useLanguage();
   const t = texts[language] || texts.vi;
+
+  const filteredSections = t.supportSections.filter(
+  (s) =>
+    s !== "Thanh toán và hóa đơn" &&
+    s !== "Quản lý tài khoản của bạn" &&
+    s !== "Các gói Premium"&&
+    s !== "Tính năng trong ứng dụng"&&
+    s !== "Thiết bị và khắc phục sự cố"&&
+    s !== "An toàn và quyền riêng tư"
+);
 
   return (
     <div className="text-white bg-black min-h-screen p-8 pt-24">
@@ -18,8 +35,18 @@ const SupportPage = () => {
       />
 
       <div className="mt-8 space-y-4">
-        {t.supportSections.map((title, i) => (
-          <div key={i} className="bg-[#1f1f1f] p-4 rounded hover:bg-[#2a2a2a] transition">
+        <SupportAccordion />
+        <AccountAccordion />
+        <PremiumAccordion />
+        <FeaturesAccordion />
+         <DevicesAccordion />
+          <PrivacyAccordion />
+
+        {filteredSections.map((title, i) => (
+          <div
+            key={i}
+            className="bg-[#1f1f1f] p-4 rounded hover:bg-[#2a2a2a] transition cursor-pointer"
+          >
             <span className="font-medium">{title}</span>
           </div>
         ))}
