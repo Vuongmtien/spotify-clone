@@ -95,7 +95,12 @@ function App() {
       setHistory((prev) => [...prev, playlist]);
     }
   };
-
+  const formatTime = (seconds) => {
+  if (!seconds || isNaN(seconds)) return "0:00";
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60).toString().padStart(2, "0");
+  return `${mins}:${secs}`;
+};
   return (
     <div className="flex h-screen bg-black text-white">
 
@@ -284,47 +289,89 @@ function App() {
       </div>
 
       {currentSong && !hideSidebarRoutes.includes(location.pathname) && (
-        <footer className="fixed bottom-0 left-0 right-0 h-20 bg-[#181818] border-t border-gray-700 px-6 flex items-center justify-between text-white z-50 transition-all duration-300">
-          <div>
-            <p className="text-sm font-semibold flex items-center gap-2">
-              Now playing: {currentSong.title}
-              <button
-                title="Add to Favorites"
-                onClick={() => {
-                  const isFav = favorites.some((f) => f.title === currentSong.title);
-                  if (!isFav) {
-                    setFavorites([...favorites, currentSong]);
-                  }
-                }}
-              >
-                ❤️
-              </button>
-            </p>
-            <p className="text-xs text-gray-400">{currentSong.artist || "Unknown artist"}</p>
-            <div className="flex gap-4 items-center">
-              <button title="Previous Song" onClick={() => {
-                if (currentIndex > 0) {
-                  handlePlay(playlists[currentIndex - 1]);
-                }
-              }} disabled={currentIndex <= 0} className="text-xl">⏮</button>
-              <button title="Pause" onClick={() => {
-                setIsPlaying(false);
-                audioRef.current?.pause();
-              }}>⏸</button>
-              <button title="Play" onClick={() => {
-                setIsPlaying(true);
-                audioRef.current?.play();
-              }}>▶️</button>
-              <button title="Next Song" onClick={() => {
-                if (currentIndex < playlists.length - 1) {
-                  handlePlay(playlists[currentIndex + 1]);
-                }
-              }} disabled={currentIndex === playlists.length - 1} className="text-xl">⏭</button>
-            </div>
-            <audio ref={audioRef} src={currentSong?.audio} autoPlay controls className="hidden" />
-          </div>
-        </footer>
-      )}
+  <footer className="fixed bottom-0 left-0 right-0 h-24 bg-[#181818] border-t border-gray-700 px-6 flex items-center justify-between text-white z-50">
+    <div className="flex items-center gap-4">
+      <img
+        src={currentSong.image}
+        alt="thumbnail"
+        className="w-14 h-14 object-cover rounded"
+      />
+      <div>
+        <p className="text-sm font-semibold flex items-center gap-2">
+          {currentSong.title}
+          <button
+            title="Add to Favorites"
+            onClick={() => {
+              const isFav = favorites.some((f) => f.title === currentSong.title);
+              if (!isFav) {
+                setFavorites([...favorites, currentSong]);
+              }
+            }}
+          >
+            ❤️
+          </button>
+        </p>
+        <p className="text-xs text-gray-400">{currentSong.artist || "Unknown artist"}</p>
+      </div>
+    </div>
+
+    <div className="flex flex-col items-center w-[40%]">
+      <div className="flex gap-6 mb-1 text-xl">
+        <button onClick={() => {
+          if (currentIndex > 0) handlePlay(playlists[currentIndex - 1]);
+        }} disabled={currentIndex <= 0}>⏮</button>
+
+        {isPlaying ? (
+          <button onClick={() => {
+            setIsPlaying(false);
+            audioRef.current?.pause();
+          }}>⏸</button>
+        ) : (
+          <button onClick={() => {
+            setIsPlaying(true);
+            audioRef.current?.play();
+          }}>▶️</button>
+        )}
+
+        <button onClick={() => {
+          if (currentIndex < playlists.length - 1) handlePlay(playlists[currentIndex + 1]);
+        }} disabled={currentIndex === playlists.length - 1}>⏭</button>
+      </div>
+
+      <div className="flex items-center w-full gap-2">
+        <span className="text-xs">{formatTime(audioRef.current?.currentTime || 0)}</span>
+        <input
+          type="range"
+          className="w-full"
+          min={0}
+          max={audioRef.current?.duration || 0}
+          value={audioRef.current?.currentTime || 0}
+          onChange={(e) => {
+            audioRef.current.currentTime = e.target.value;
+          }}
+        />
+        <span className="text-xs">{formatTime(audioRef.current?.duration || 0)}</span>
+      </div>
+    </div>
+
+    <div className="flex items-center gap-2 w-36">
+      <i className="ri-volume-down-line" />
+      <input
+        type="range"
+        min={0}
+        max={1}
+        step={0.01}
+        value={audioRef.current?.volume || 1}
+        onChange={(e) => {
+          audioRef.current.volume = parseFloat(e.target.value);
+        }}
+      />
+    </div>
+
+    <audio ref={audioRef} src={currentSong?.audio} autoPlay controls className="hidden" />
+  </footer>
+)}
+
 
       {!hideSidebarRoutes.includes(location.pathname) && (
         <button

@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
+import { texts } from "../constants/texts";
 
 const SupportAccordion = () => {
   const [openMain, setOpenMain] = useState(false);
+  const { language } = useLanguage();
+  const t = texts[language] || texts.vi;
 
-  const topics = [
-    "Chủ đề đề xuất",
-    "Quản lý thanh toán",
-    "Phương thức thanh toán",
-    "Trợ giúp về tính phí",
-  ];
+  const topics = t.supportAccordionTopics || [];
 
   return (
     <div className="bg-[#1f1f1f] text-white rounded-lg overflow-hidden border border-gray-700">
@@ -18,7 +17,7 @@ const SupportAccordion = () => {
         onClick={() => setOpenMain(!openMain)}
       >
         <div className="flex items-center gap-2 font-semibold text-lg">
-          🧾 Thanh toán và hóa đơn
+          🧾 {t.supportAccordionTitle}
         </div>
         {openMain ? <ChevronUp /> : <ChevronDown />}
       </div>

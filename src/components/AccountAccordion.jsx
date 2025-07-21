@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
+import { texts } from "../constants/texts";
 
 const AccountAccordion = () => {
   const [open, setOpen] = useState(false);
+  const { language } = useLanguage();
+  const t = texts[language] || texts.vi;
 
-  const items = [
-    "Đang đăng nhập",
-    "Trợ giúp về hồ sơ",
-    "Cài đặt tài khoản",
-    "Bảo mật",
-  ];
+  const items = t.accountAccordionItems || [];
 
   return (
     <div className="bg-[#1f1f1f] text-white rounded-lg overflow-hidden border border-gray-700">
@@ -18,7 +17,7 @@ const AccountAccordion = () => {
         onClick={() => setOpen(!open)}
       >
         <div className="flex items-center gap-2 font-semibold text-lg">
-          🧑‍💼 Quản lý tài khoản của bạn
+          🧑‍💼 {t.accountAccordionTitle}
         </div>
         {open ? <ChevronUp /> : <ChevronDown />}
       </div>

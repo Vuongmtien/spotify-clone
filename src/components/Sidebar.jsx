@@ -75,30 +75,29 @@ function Sidebar({ showSidebar }) {
 
             <div className="mt-6 bg-[#121212] text-white p-4 rounded-lg shadow-md">
               <h3 className="text-base font-bold mb-1">
-                Hãy cùng tìm và theo dõi một số podcast
-              </h3>
-              <p className="text-sm text-gray-300 mb-3">
-                Chúng tôi sẽ cập nhật cho bạn thông tin về các tập mới
-              </p>
-              <button
-                onClick={() => navigate("/podcasts")}
-                className="bg-white text-black font-semibold text-sm px-4 py-1 rounded-full hover:scale-105 transition-transform"
-              >
-                Duyệt xem podcast
-              </button>
+  {t.podcastBoxTitle}
+</h3>
+<p className="text-sm text-gray-300 mb-3">
+  {t.podcastBoxDesc}
+</p>
+<button
+  onClick={() => navigate("/podcasts")}
+  className="bg-white text-black font-semibold text-sm px-4 py-1 rounded-full hover:scale-105 transition-transform"
+>
+  {t.podcastBoxButton}
+</button>
             </div>
           </ul>
         </div>
 
         <div className="text-[11px] text-gray-400 space-y-2">
           <div className="flex flex-wrap gap-x-4 gap-y-1">
-            <span className="hover:underline cursor-pointer">Pháp lý</span>
-            <span className="hover:underline cursor-pointer">Trung tâm an toàn và quyền riêng tư</span>
-            <span className="hover:underline cursor-pointer">Chính sách quyền riêng tư</span>
-            <span className="hover:underline cursor-pointer">Cookie</span>
-            <span className="hover:underline cursor-pointer">Giới thiệu Quảng cáo</span>
-            <span className="hover:underline cursor-pointer">Hỗ trợ tiếp cận</span>
-          </div>
+  {t.footerLinks.map((text, i) => (
+    <span key={i} className="hover:underline cursor-pointer">
+      {text}
+    </span>
+  ))}
+</div>
 
           <button
             onClick={() => setShowLangPopup(true)}

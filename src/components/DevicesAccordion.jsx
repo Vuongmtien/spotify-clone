@@ -1,17 +1,14 @@
 import React, { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
+import { texts } from "../constants/texts";
 
 const DevicesAccordion = () => {
   const [open, setOpen] = useState(false);
+  const { language } = useLanguage();
+  const t = texts[language] || texts.vi;
 
-  const items = [
-    "Loa",
-    "Đồng hồ thông minh",
-    "TV",
-    "Chơi game",
-    "Ô tô",
-    "Trợ lý Giọng nói",
-  ];
+  const items = t.devicesAccordionItems || [];
 
   return (
     <div className="bg-[#1f1f1f] text-white rounded-lg overflow-hidden border border-gray-700">
@@ -20,7 +17,7 @@ const DevicesAccordion = () => {
         onClick={() => setOpen(!open)}
       >
         <div className="flex items-center gap-2 font-semibold text-lg">
-          🖥️ Thiết bị và khắc phục sự cố
+          🖥️ {t.devicesAccordionTitle}
         </div>
         {open ? <ChevronUp /> : <ChevronDown />}
       </div>

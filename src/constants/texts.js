@@ -123,8 +123,78 @@ export const texts = {
     shareData: "Chia sẻ dữ liệu đăng ký với các nhà cung cấp nội dung Spotify cho mục đích tiếp thị.",
     cancel: "Hủy",
     saveProfile: "Lưu hồ sơ",
-  
-  
+    supportAccordionTitle: "Thanh toán và hóa đơn",
+  supportAccordionTitle: "Thanh toán và hóa đơn",
+  supportAccordionTopics: [
+    "Chủ đề đề xuất",
+    "Quản lý thanh toán",
+    "Phương thức thanh toán",
+    "Trợ giúp về tính phí"
+  ],
+  accountAccordionTitle: "Quản lý tài khoản của bạn",
+accountAccordionItems: [
+  "Đang đăng nhập",
+  "Trợ giúp về hồ sơ",
+  "Cài đặt tài khoản",
+  "Bảo mật"
+],
+  featuresAccordionTitle: "Tính năng trong ứng dụng",
+featuresAccordionItems: [
+  "Bắt đầu",
+  "Cài đặt ứng dụng",
+  "Xử lý sự cố",
+  "Playlist",
+  "Tính năng",
+  "Các tính năng mạng xã hội",
+  "Podcast",
+  "Sách nói",
+  "Sự kiện trực tiếp",
+  "Quyền riêng tư nghe nhạc"
+],
+devicesAccordionTitle: "Thiết bị và khắc phục sự cố",
+devicesAccordionItems: [
+  "Loa",
+  "Đồng hồ thông minh",
+  "TV",
+  "Chơi game",
+  "Ô tô",
+  "Trợ lý Giọng nói"
+],
+premiumAccordionTitle: "Các gói Premium",
+premiumAccordionItems: [
+  "Các gói có sẵn",
+  "Cài đặt gói",
+  "Premium Student"
+],
+privacyAccordionTitle: "An toàn và quyền riêng tư",
+privacyAccordionItems: [
+  "Quyền dữ liệu và lựa chọn về quyền riêng tư",
+  "Tìm hiểu về dữ liệu của tôi",
+  "Trung tâm an toàn và quyền riêng tư"
+],
+podcastTitle: "Podcast",
+podcastCategories: "Danh mục podcast",
+podcastBoxTitle: "Hãy cùng tìm và theo dõi một số podcast",
+podcastBoxDesc: "Chúng tôi sẽ cập nhật cho bạn thông tin về các tập mới",
+podcastBoxButton: "Duyệt xem podcast",
+podcastWipAlert: "Chức năng đang phát triển",
+podcastCategoriesList: [
+  "Bảng xếp hạng", "Sư phạm", "Tài liệu", "Hài kịch", "Văn hoá Pop",
+  "Thể dục và dinh dưỡng", "Người nổi tiếng", "Podcast về truyền hình",
+  "Sắc đẹp", "Trò chơi điện tử", "Phim ảnh", "Sách"
+],
+podcastBoxTitle: "Hãy cùng tìm và theo dõi một số podcast",
+podcastBoxDesc: "Chúng tôi sẽ cập nhật cho bạn thông tin về các tập mới",
+podcastBoxButton: "Duyệt xem podcast",
+footerLinks: [
+  "Pháp lý",
+  "Trung tâm an toàn và quyền riêng tư",
+  "Chính sách quyền riêng tư",
+  "Cookie",
+  "Giới thiệu Quảng cáo",
+  "Hỗ trợ tiếp cận"
+],
+
 },
     
 
@@ -253,6 +323,77 @@ export const texts = {
     shareData: "Share registration data with Spotify's content providers for marketing.",
     cancel: "Cancel",
     saveProfile: "Save Profile",
+    supportAccordionTitle: "Billing and Payments",
+  supportAccordionTopics: [
+    "Suggested topics",
+    "Manage payments",
+    "Payment methods",
+    "Help with charges"
+  ],
+  accountAccordionTitle: "Manage your account",
+accountAccordionItems: [
+  "Logging in",
+  "Profile help",
+  "Account settings",
+  "Security"
+],
+featuresAccordionTitle: "In-app Features",
+featuresAccordionItems: [
+  "Getting started",
+  "App setup",
+  "Troubleshooting",
+  "Playlists",
+  "Features",
+  "Social features",
+  "Podcasts",
+  "Audiobooks",
+  "Live events",
+  "Listening privacy"
+],
+devicesAccordionTitle: "Devices and Troubleshooting",
+devicesAccordionItems: [
+  "Speakers",
+  "Smartwatches",
+  "TV",
+  "Gaming",
+  "Car",
+  "Voice Assistant"
+],
+premiumAccordionTitle: "Premium Plans",
+premiumAccordionItems: [
+  "Available plans",
+  "Plan settings",
+  "Premium Student"
+],
+privacyAccordionTitle: "Safety and Privacy",
+privacyAccordionItems: [
+  "Data rights and privacy choices",
+  "Understand my data",
+  "Safety and Privacy Center"
+],
+podcastTitle: "Podcasts",
+podcastCategories: "Podcast Categories",
+podcastBoxTitle: "Let’s find and follow some podcasts",
+podcastBoxDesc: "We’ll keep you updated on new episodes",
+podcastBoxButton: "Browse podcasts",
+podcastWipAlert: "Feature in development",
+podcastCategoriesList: [
+  "Rankings", "Education", "Documentary", "Comedy", "Pop Culture",
+  "Fitness & Nutrition", "Celebrities", "TV Podcasts",
+  "Beauty", "Gaming", "Movies", "Books"
+],
+podcastBoxTitle: "Let’s find and follow some podcasts",
+podcastBoxDesc: "We’ll keep you updated on new episodes",
+podcastBoxButton: "Browse podcasts",
+footerLinks: [
+  "Legal",
+  "Safety and Privacy Center",
+  "Privacy Policy",
+  "Cookie",
+  "About Ads",
+  "Accessibility Support"
+],
+
 },
   
 
@@ -381,6 +522,77 @@ export const texts = {
     shareData: "Spotifyのコンテンツプロバイダーと登録データを共有してマーケティング目的に使用する。",
     cancel: "キャンセル",
     saveProfile: "プロフィールを保存",
+    supportAccordionTitle: "請求と支払い",
+  supportAccordionTopics: [
+    "提案されたトピック",
+    "支払いの管理",
+    "支払い方法",
+    "料金に関するヘルプ"
+  ],
+  accountAccordionTitle: "アカウントの管理",
+accountAccordionItems: [
+  "ログイン中",
+  "プロフィールヘルプ",
+  "アカウント設定",
+  "セキュリティ"
+],
+featuresAccordionTitle: "アプリ内機能",
+featuresAccordionItems: [
+  "はじめに",
+  "アプリの設定",
+  "トラブルシューティング",
+  "プレイリスト",
+  "機能",
+  "ソーシャル機能",
+  "ポッドキャスト",
+  "オーディオブック",
+  "ライブイベント",
+  "リスニングのプライバシー"
+],
+devicesAccordionTitle: "デバイスとトラブルシューティング",
+devicesAccordionItems: [
+  "スピーカー",
+  "スマートウォッチ",
+  "テレビ",
+  "ゲーム",
+  "車",
+  "音声アシスタント"
+],
+premiumAccordionTitle: "プレミアムプラン",
+premiumAccordionItems: [
+  "利用可能なプラン",
+  "プラン設定",
+  "プレミアム学生向け"
+],
+privacyAccordionTitle: "安全とプライバシー",
+privacyAccordionItems: [
+  "データの権利とプライバシーの選択",
+  "自分のデータについて知る",
+  "安全とプライバシーセンター"
+],
+podcastTitle: "ポッドキャスト",
+podcastCategories: "カテゴリ",
+podcastBoxTitle: "ポッドキャストを見つけてフォローしましょう",
+podcastBoxDesc: "新しいエピソードについてお知らせします",
+podcastBoxButton: "ポッドキャストを見る",
+podcastWipAlert: "開発中の機能です",
+podcastCategoriesList: [
+  "ランキング", "教育", "ドキュメンタリー", "コメディ", "ポップカルチャー",
+  "フィットネスと栄養", "有名人", "テレビのポッドキャスト",
+  "美容", "ゲーム", "映画", "本"
+],
+podcastBoxTitle: "ポッドキャストを見つけてフォローしましょう",
+podcastBoxDesc: "新しいエピソードについてお知らせします",
+podcastBoxButton: "ポッドキャストを見る",
+footerLinks: [
+  "法的事項",
+  "安全とプライバシーセンター",
+  "プライバシーポリシー",
+  "クッキー",
+  "広告について",
+  "アクセシビリティサポート"
+],
+
 
   }
 };

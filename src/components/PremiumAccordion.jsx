@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
+import { texts } from "../constants/texts";
 
 const PremiumAccordion = () => {
   const [open, setOpen] = useState(false);
+  const { language } = useLanguage();
+  const t = texts[language] || texts.vi;
 
-  const items = ["Các gói có sẵn", "Cài đặt gói", "Premium Student"];
+  const items = t.premiumAccordionItems || [];
 
   return (
     <div className="bg-[#1f1f1f] text-white rounded-lg overflow-hidden border border-gray-700">
@@ -13,7 +17,7 @@ const PremiumAccordion = () => {
         onClick={() => setOpen(!open)}
       >
         <div className="flex items-center gap-2 font-semibold text-lg">
-          🧩 Các gói Premium
+          💎 {t.premiumAccordionTitle}
         </div>
         {open ? <ChevronUp /> : <ChevronDown />}
       </div>

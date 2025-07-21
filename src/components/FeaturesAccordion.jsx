@@ -1,21 +1,14 @@
 import React, { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
+import { texts } from "../constants/texts";
 
 const FeaturesAccordion = () => {
   const [open, setOpen] = useState(false);
+  const { language } = useLanguage();
+  const t = texts[language] || texts.vi;
 
-  const items = [
-    "Bắt đầu",
-    "Cài đặt ứng dụng",
-    "Xử lý sự cố",
-    "Playlist",
-    "Tính năng",
-    "Các tính năng mạng xã hội",
-    "Podcast",
-    "Sách nói",
-    "Sự kiện trực tiếp",
-    "Quyền riêng tư nghe nhạc",
-  ];
+  const items = t.featuresAccordionItems || [];
 
   return (
     <div className="bg-[#1f1f1f] text-white rounded-lg overflow-hidden border border-gray-700">
@@ -24,7 +17,7 @@ const FeaturesAccordion = () => {
         onClick={() => setOpen(!open)}
       >
         <div className="flex items-center gap-2 font-semibold text-lg">
-          🧩 Tính năng trong ứng dụng
+          🧩 {t.featuresAccordionTitle}
         </div>
         {open ? <ChevronUp /> : <ChevronDown />}
       </div>

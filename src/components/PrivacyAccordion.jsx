@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
+import { texts } from "../constants/texts";
 
 const PrivacyAccordion = () => {
   const [open, setOpen] = useState(false);
+  const { language } = useLanguage();
+  const t = texts[language] || texts.vi;
 
-  const items = [
-    "Quyền dữ liệu và lựa chọn về quyền riêng tư",
-    "Tìm hiểu về dữ liệu của tôi",
-    "Trung tâm an toàn và quyền riêng tư",
-  ];
+  const items = t.privacyAccordionItems || [];
 
   return (
     <div className="bg-[#1f1f1f] text-white rounded-lg overflow-hidden border border-gray-700">
@@ -17,7 +17,7 @@ const PrivacyAccordion = () => {
         onClick={() => setOpen(!open)}
       >
         <div className="flex items-center gap-2 font-semibold text-lg">
-          🔒 An toàn và quyền riêng tư
+          🔒 {t.privacyAccordionTitle}
         </div>
         {open ? <ChevronUp /> : <ChevronDown />}
       </div>
