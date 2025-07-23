@@ -20,7 +20,7 @@ import PlanManagement from "./components/PlanManagement";
 import EditProfile from "./components/EditProfile";
 import RecoverPlaylist from "./components/RecoverPlaylist";
 import PodcastRankings from "./components/PodcastRanking";
-
+import ArtistDetail from "./components/ArtistDetail";
 
 
 
@@ -151,18 +151,22 @@ function App() {
               </div>
 
               <h2 className="text-3xl font-bold mb-6">{t.popularArtists}</h2>
-              <div className="flex gap-6 mb-12">
-                {popularArtists.map((artist, index) => (
-                  <div key={index} className="text-center">
-                    <img
-                      src={artist.image}
-                      alt={artist.name}
-                      className="w-28 h-28 md:w-32 md:h-32 rounded-full object-cover mx-auto border-2 border-gray-700"
-                    />
-                    <p className="mt-2 text-white">{artist.name}</p>
-                  </div>
-                ))}
-              </div>
+<div className="flex gap-6 mb-12">
+  {popularArtists.map((artist, index) => (
+    <div
+      key={index}
+      className="text-center cursor-pointer hover:scale-105 transition"
+      onClick={() => navigate(`/artist/${artist.name}`)} 
+    >
+      <img
+        src={artist.image}
+        alt={artist.name}
+        className="w-28 h-28 md:w-32 md:h-32 rounded-full object-cover mx-auto border-2 border-gray-700"
+      />
+      <p className="mt-2 text-white">{artist.name}</p>
+    </div>
+  ))}
+</div>
 
               <h2 className="text-3xl font-semibold mb-4">{t.playlistsForYou}</h2>
               {loading ? (
@@ -215,6 +219,7 @@ function App() {
           } />
           <Route path="/playlist/recover" element={<RecoverPlaylist />} />
           <Route path="/podcasts/rankings" element={<PodcastRankings />} />
+          <Route path="/artist/:artistName" element={<ArtistDetail />} />
 
 
           <Route path="/account/plan" element={<PlanManagement />} />

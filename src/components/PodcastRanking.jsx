@@ -8,9 +8,9 @@ const PodcastRankings = () => {
   const t = texts[language] || texts.vi;
 
   const topPodcasts = [
-    { title: "Podcast Tâm Sự Đêm Khuya", author: "Ngọc Trinh", image: "https://via.placeholder.com/80" },
-    { title: "Cà Phê Sáng", author: "Hải Yến", image: "https://via.placeholder.com/80" },
-    { title: "Khởi nghiệp 4.0", author: "Minh Khoa", image: "https://via.placeholder.com/80" },
+    { title: "Podcast Tâm Sự Đêm Khuya", author: "Ngọc Trinh", image: "https://cdn.voh.com.vn/vohdata/default/2023/02/09/fm-956-mhz-tam-su-dem-khuya_20230209111526.jpg" },
+    { title: "Cà Phê Sáng", author: "Hải Yến", image: "https://product.hstatic.net/200000343865/product/am-thuc-chinh-phuc-the-gioi---chuyen-hai-trinh-cua-ca-phe_d494d8a6be2143489e13bfbcbad098b3_master.jpg" },
+    { title: "Khởi nghiệp 4.0", author: "Minh Khoa", image: "https://i.pinimg.com/originals/22/87/62/228762e623e0257c919bb9cc1148c16c.jpg" },
   ];
 
   return (
