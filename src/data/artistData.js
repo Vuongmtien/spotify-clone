@@ -24,8 +24,8 @@ export const artistData = {
   "Jack": {
     name: "Jack-J97",
     monthlyListeners: "407.873",
-    banner: "/public/jack.jpg",
-    avatar: "/public/jack1.jpg",
+    banner: "/jack.jpg",
+    avatar: "/jack1.jpg",
     popularSongs: [
       { title: "Hoa Hải Đường", plays: "11.370.021", duration: "3:49" },
       { title: "Đom Đóm", plays: "9.646.497", duration: "5:24" },
